@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-deployments
+  labels:
+    app: teste-cluster
+    version: 1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teste-cluster
+  template:
+    metadata:
+      labels:
+        app: teste-cluster
+    spec:
+      containers:
+        - name: teste-cluster
+          image: thaleseduardo/hello-go
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3333

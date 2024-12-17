@@ -1,0 +1,12 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: kubernetes-go-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    name: kubernetes-deployments
+    kind: Deployment
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 75
